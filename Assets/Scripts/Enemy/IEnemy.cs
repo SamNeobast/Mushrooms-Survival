@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class IEnemy : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
 
