@@ -1,20 +1,27 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
 
+    private Animator anim;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         Movement();
+    }
+
+    private void Update()
+    {
+        ActivateMovingAnimation();
     }
 
     private void Movement()
@@ -23,5 +30,16 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
     }
 
-    
+    private const string NameWalkingBoolAnim = "Walking";
+    private void ActivateMovingAnimation()
+    {
+        if (movementDirection != Vector2.zero)
+        {
+            anim.SetBool(NameWalkingBoolAnim, true);
+        }
+        else
+        {
+            anim.SetBool(NameWalkingBoolAnim, false);
+        }
+    }
 }

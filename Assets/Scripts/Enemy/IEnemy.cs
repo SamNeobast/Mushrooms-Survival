@@ -8,7 +8,7 @@ public abstract class IEnemy : MonoBehaviour
 
     private void Start()
     {
-        target = FindObjectOfType<Player>().transform;
+        target = FindObjectOfType<PlayerMovement>().transform;
     }
 
     private void Update()
@@ -22,5 +22,4 @@ public abstract class IEnemy : MonoBehaviour
         transform.position += direction * moveSpeed * Time.deltaTime;
 
     }
-
 }
